@@ -1,0 +1,171 @@
+<html>
+<head>
+  <style>
+    body {
+      background-color: #f0f0f0;
+      font-family: Arial, sans-serif;
+    }
+
+    .container {
+      width: 80%;
+      margin: 0 auto;
+    }
+
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px;
+    }
+
+    .logo {
+      width: 100px;
+      height: 100px;
+    }
+
+    .nav {
+      display: flex;
+      list-style: none;
+    }
+
+    .nav li {
+      margin: 0 10px;
+    }
+
+    .nav a {
+      text-decoration: none;
+      color: black;
+    }
+
+    .main {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-gap: 20px;
+      padding: 20px;
+    }
+
+    .card {
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+      perspective: 1000px;
+    }
+
+    .card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transition: transform 0.8s;
+      transform-style: preserve-3d;
+    }
+
+    .card-front, .card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+    }
+
+    .card-front img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+
+transition: transform 0.3s; 
+    }
+
+    .card-front h3 {
+      text-align: center;
+      margin: 10px 0;
+    }
+
+    .card-back {
+      background-color: #ccc;
+      transform: rotateY(180deg);
+    }
+
+    .card-back p {
+      padding: 20px;
+    }
+    
+    .flipped {
+        transform: rotateY(180deg);
+    }
+
+     /* <!-- Added a hover selector for the image to scale it up --> */
+     .card-front img:hover {
+         transform: scale(1.1);
+     }
+    
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <img src="logo.png" alt="logo" class="logo">
+      <ul class="nav">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Gallery</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </div>
+    <div class="main">
+        <!-- Added a div with class card-inner and moved the card-front and card-back inside it -->
+        <!-- Added an onclick attribute to call a flipCard function -->
+        <!-- Added some dummy text for the card-back -->
+        
+        <div class="card" onclick="flipCard(this)">
+            <div class="card-inner">
+                <div class="card-front">
+                    <img src="dragon1.jpg" alt="dragon1">
+                    <h3>Red Dragon</h3>
+                </div>
+                <div class="card-back">
+                    <p>This is a red dragon. It breathes fire and lives in volcanoes.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card" onclick="flipCard(this)">
+            <div class="card-inner">
+                <div class="card-front">
+                    <img src="dragon2.jpg" alt="dragon2">
+                    <h3>Blue Dragon</h3>
+                </div>
+                <div class="card-back">
+                    <p>This is a blue dragon. It breathes ice and lives in glaciers.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="card" onclick="flipCard(this)">
+            <div class="card-inner">
+                <div class="card-front">
+                    <img src="dragon3.jpg" alt="dragon3">
+                    <h3>Green Dragon</h3>
+                </div>
+                <div class="card-back">
+                    <p>This is a green dragon. It breathes poison and lives in swamps.</p>
+                </div>
+            </div>
+        </div>
+
+        
+      
+    </div>
+    
+     <!-- Added a script tag with a flipCard function that toggles the flipped class on the card-inner element -->
+     
+     <script>
+         function flipCard(card) {
+             // Get the card-inner element inside the card
+             let cardInner = card.querySelector(".card-inner");
+             // Toggle the flipped class on the card-inner element
+             cardInner.classList.toggle("flipped");
+         }
+     </script>
+</body>
+</html>
